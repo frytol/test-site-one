@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="cs">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}CodeHub{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/variables/base.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/base.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/hamburger.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/section.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/header.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/hero.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/card-block.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/accordion.css') }}">
+        {% endblock %}
+    </head>
+    <body>
+        <!-- Header komponenta - implementujte HTML strukturu a stylování podle Figma designu -->
+        <header class="header">
+            <a class="header__logo" href="/" aria-label="Přejít na úvod">
+                <img class="header__logo-file" src="{{ asset('images/logo.svg') }}" alt="Logo společnosti"> 
+            </a>
+            <nav id="hlavni-menu" class="header__nav" aria-label="Hlavní navigace">
+                <ul class="header__nav-items">
+                    {% for item in menu_items %}
+                        <li class="header__nav-item">
+                            <a class="header__nav-link" href="{{ item.url }}" target="{{ item.target }}">
+                                {{ item.name }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+            <button class="hamburger" aria-label="Otevřít menu" aria-expanded="false" aria-controls="hlavni-menu">
+                <span class="hamburger__line" aria-hidden="true"></span>
+                <span class="hamburger__line" aria-hidden="true"></span>
+                <span class="hamburger__line" aria-hidden="true"></span>
+            </button>
+        </header>
+
+        {% block body %}{% endblock %}
+
+        {% block javascripts %}
+            <script src="{{ asset('js/main.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,15 @@
+html {
+    font-family: 'Inter'; /* @future Add to custom variables */
+    overflow: hidden;
+	overflow-y: visible;
+}
+
+html.no-scroll {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+body.no-scroll {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}

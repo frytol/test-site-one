@@ -1,0 +1,127 @@
+/* 
+ * CardBlock komponenta CSS
+ * Implementujte stylování podle Figma designu
+ * Použijte BEM metodologii pro názvy tříd
+ * 
+ * CardBlock obsahuje:
+ * - Nadpis bloku (title)
+ * - Sada karet (cards)
+ * 
+ * Každá karta obsahuje:
+ * - Náhledový obrázek (image)
+ * - Nadpis karty (title)
+ * - Krátký text (text)  
+ * - Odkaz na detail (link-url)
+ * 
+ * Responzivní design pro desktop a mobil (breakpoint 480px)
+ * Karty by měly být v řádcích/sloupcích podle designu
+ */
+ 
+.card-block {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2.5rem;
+}
+
+.card-block__headline {
+   font-size: var(--f-font-size-8);
+   color: var(--color-text-neutral-dark-3)
+}
+
+.card-block__items {
+    display: grid;
+    grid-template-columns: 1fr;
+    border-bottom: .0625rem solid var(--color-neutral-light-3);
+}
+
+.card-block__item {
+    container-type: inline-size;
+    container-name: card-block;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 1rem;
+    border-left: .0625rem solid var(--color-neutral-light-3);
+    border-right: .0625rem solid var(--color-neutral-light-3);
+    border-top: .0625rem solid var(--color-neutral-light-3);
+}
+
+.card-block__image {
+    width: 100%;
+    aspect-ratio: 279/280;
+    object-fit: cover;
+}
+
+.card-block__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.card-block__title {
+    font-size: var(--f-font-size-5);
+    color: var(--color-text-neutral-dark-3);
+}
+
+.card-block__text {
+    font-size: var(--f-font-size-5);
+    color: var(--color-text-neutral-medium-3);
+}
+
+.card-block__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.75rem;
+    aspect-ratio: 1/1;
+    margin-block-start: auto;
+    margin-inline-start: auto;
+}
+
+.card-block__link:hover .card-block__svg {
+    color: var(--color-text-neutral-dark-3);
+}
+
+.card-block__svg {
+    width: 1.25rem;
+    aspect-ratio: 1/1;
+    color: var(--color-icon-blue);
+    transition: color 300ms ease;
+}
+
+@media only screen and (min-width: 480px) {
+    .card-block__items {
+        row-gap: 5.375rem;
+        grid-template-columns: repeat(2, 1fr);
+        border-bottom: 0;
+    }
+
+    .card-block__item {
+        border: .0625rem solid var(--color-neutral-light-3);
+    }
+}
+
+@container card-block (min-width: 250px) {
+    .card-block__item {
+        gap: 2.5rem;
+        padding: 2rem;
+    }
+
+    .card-block__image {
+        aspect-ratio: 816/400;
+    }
+
+    .card-block__content {
+        gap: 2rem;
+    }
+
+    .card-block__title {
+        font-size: var(--f-font-size-8);
+    }
+}
+
+@container card-block (min-width: 400px) {
+    .card-block__image {
+        aspect-ratio: 816/280;
+    }
+}

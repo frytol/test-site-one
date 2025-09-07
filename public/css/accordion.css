@@ -1,0 +1,96 @@
+/* 
+ * Accordion komponenta CSS
+ * Implementujte stylování podle Figma designu
+ * Použijte BEM metodologii pro názvy tříd
+ * 
+ * Accordion obsahuje:
+ * - Nadpis (title)
+ * - Popisek (description)
+ * - FAQ položky jako accordion (question klikací, answer se zobrazí/skryje)
+ * 
+ * Responzivní design pro desktop a mobil (breakpoint 480px)
+ * JavaScript funkčnost pro otevírání/zavírání FAQ položek
+ */
+
+.accordion {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2.5rem;
+}
+
+.accordion__header {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+    width: 100%;
+    max-width: 35rem;
+}
+
+.accordion__header-title {
+    font-size: var(--f-font-size-8);
+    color: var(--color-text-neutral-dark-3);
+}
+
+.accordion__header-description {
+    font-size: var(--f-font-size-4);
+    color: var(--color-text-neutral-medium-2);
+}
+
+.accordion__items {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 65rem;
+}
+
+.accordion__item {
+    border-block-end: 0.0625rem solid var(--color-neutral-light-3);
+}
+
+.accordion__item-question {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 1.75rem;
+    padding-inline: 1.5rem;
+    font-size: var(--f-font-size-5);
+    font-weight: 700;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+}
+
+.accordion__item.open .accordion__item-svg {
+    transform: rotate(180deg);
+    color: var(--color-primary);
+}
+
+.accordion__item-svg {
+    width: 1.75rem;
+    aspect-ratio: 1 / 1;
+    color: var(--color-text-neutral-dark-3);
+    transition: transform 0.4s ease, color 0.3s ease;
+}
+
+.accordion__item-answer {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.4s ease;
+}
+
+.accordion__item-answer-content {
+    font-size: var(--f-font-size-4);
+    font-weight: 400;
+    padding-block: 1rem 1.75rem;
+    padding-inline: 1.5rem;
+}
+
+@media only screen and (min-width: 768px) {
+    .accordion {
+        flex-direction: row;
+    }
+}

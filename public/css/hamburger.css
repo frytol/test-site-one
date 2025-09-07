@@ -1,0 +1,30 @@
+.hamburger {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    gap: .5rem;
+    width: 2.5rem;
+    height: 1.75rem;
+    border: 0;
+    background-color: transparent;
+    z-index: 1001;
+}
+
+.hamburger__line {
+    background-color: var(--color-black);
+    width: 100%;
+    height: .25rem;
+    border-radius: .125rem;
+}
+
+.hamburger__line:nth-of-type(2) {
+    width: 66.666%;
+}
+
+@media only screen and (min-width: 768px) {
+    .hamburger {
+        display: none;
+    }
+}

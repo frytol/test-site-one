@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CodeHub - Domovská stránka{% endblock %}
+
+{% block body %}
+    <main class="main">
+        <!-- Hero komponenta - implementujte HTML strukturu a stylování podle Figma designu -->
+        {% if hero %}
+        <section class="hero" style="background-image: url('{{ asset('images/' ~ hero.backgroundImage) }}')">
+            <div class="hero__content">
+                <h1 class="hero__title">{{ hero.title }}</h1>
+                <p class="hero__text">{{ hero.text }}</p>
+            </div>
+        </section>
+        {% endif %}
+
+        <!-- CardBlock komponenta - implementujte HTML strukturu a stylování podle Figma designu -->
+        {% if card_block %}
+        <section class="section">
+            <div class="card-block">
+                <h2 class="card-block__headline">{{ card_block.title }}</h2>
+                <div class="card-block__items">
+                    {% for card in card_block.cards %}
+                        {% if card.isActive %}
+                        <div class="card-block__item">
+                            <img class="card-block__image" src={{ asset('/images/' ~ card.image) }} alt={{ card.title }} >
+                            <div class="card-block__content">
+                                <h3 class="card-block__title">{{ card.title }}</h3>
+                                <p class="card-block__text">{{ card.text }}</p>
+                            </div>
+                            <a class="card-block__link" href={{ card.linkUrl }} aria-label="Přejít na článek {{ card.title }}">
+                                <svg class="card-block__svg">
+                                    <use href="/images/sprite.svg#icon-arrow"></use>
+                                </svg>
+                            </a>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        {% endif %}
+
+        <!-- Accordion komponenta - implementujte HTML strukturu a stylování podle Figma designu -->
+        {% if accordion_block %}
+        <section class="section">
+            <div class="accordion">
+                <div class="accordion__header">
+                    <h2 class="accordion__header-title">{{ accordion_block.title }}</h2>
+                    <p class="accordion__header-description">{{ accordion_block.description }}</p>
+                </div>
+                <div class="accordion__items">
+                    {% for faq in featured_faqs %}
+                    <div class="accordion__item" aria-expanded="false">
+                        <button
+                            class="accordion__item-question"
+                            id="faq-question-{{ loop.index }}"
+                            aria-expanded="false"
+                            aria-controls="faq-answer-{{ loop.index }}"
+                        >
+                            {{ faq.question }}
+                            <svg class="accordion__item-svg" aria-hidden="true">
+                                <use href="/images/sprite.svg#icon-chevron-down"></use>
+                            </svg>
+                        </button>
+                        <div
+                            class="accordion__item-answer"
+                            id="faq-answer-{{ loop.index }}"
+                            role="region"
+                            aria-labelledby="faq-question-{{ loop.index }}"
+                            aria-hidden="true"
+                        >
+                            <div class="accordion__item-answer-content">
+                                {{ faq.answer }}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        {% endif %}
+        <!-- @note - Poznámky -->
+        <section class="section section--info">
+            <h2>Moje poznámky</h2>
+            <p>Dovolím si sepsat pár věcí co bych při vývoji využil/udělal.</p>
+            <br><br>
+            <h3>Obecné:</h3>
+            <ul>
+                <li>Použil přeprocesor například SASS.</li>
+                <li>Jednotlivé komponenty sem ponechal v index.html.twig, předpokládám že je to záměr aby to pro test nebylo zbytečně složité.</li>
+            </ul>
+            <h3>Logo:</h3>
+            <ul>
+                <li>Logo ve Figme není přímo v křivkách (je to tedy svg které má v sobě klasické png).</li>
+                <li>Logo z nějakého důvodu má ve figme padding-block: 18px 15px; Zachoval jsem.</li>
+            </ul>
+            <h3>Komponenty:</h3>
+            <ul>
+                <li>Změnil jsem názvy již existujících class v base.html.twig pro header s tím že ideálně bych logo i menu dal do samostatných komponent(šablona i css)</li>
+                <li>U komponenty card-block a accordion, je nadpis a případně description. Toto bych vytvořil jako samostatnou komponentu, minimálně z pohledu css ale ideálně i z pohledu samotné šablony s možností případné modifikace například pro zvolení h1-h6.</li>
+            </ul>
+        </section>
+        <!-- @note - Poznámky END -->
+    </main>
+{% endblock %}

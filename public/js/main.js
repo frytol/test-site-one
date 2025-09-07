@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const navLinks = nav.querySelectorAll('a')
 
     function isMobile() {
-        return window.matchMedia('(max-width: 767px)').matches;
+        return window.matchMedia('(max-width: 767px)').matches
     }
 
     function resetNoScroll() {

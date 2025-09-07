@@ -13,3 +13,16 @@ body.no-scroll {
     overflow-x: hidden;
     overflow-y: hidden;
 }
+
+p {
+    line-height: 1.7;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    line-height: 1; /* value from figma */
+}

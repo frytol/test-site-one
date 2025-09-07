@@ -30,11 +30,13 @@
 .accordion__header-title {
     font-size: var(--f-font-size-8);
     color: var(--color-text-neutral-dark-3);
+    letter-spacing: .06rem;
 }
 
 .accordion__header-description {
     font-size: var(--f-font-size-4);
     color: var(--color-text-neutral-medium-2);
+    letter-spacing: .01rem;
 }
 
 .accordion__items {
@@ -58,6 +60,7 @@
     padding-inline: 1.5rem;
     font-size: var(--f-font-size-5);
     font-weight: 700;
+    line-height: 1.777;
     background: none;
     border: none;
     width: 100%;
@@ -83,10 +86,11 @@
 }
 
 .accordion__item-answer-content {
-    font-size: var(--f-font-size-4);
-    font-weight: 400;
     padding-block: 1rem 1.75rem;
     padding-inline: 1.5rem;
+    font-size: var(--f-font-size-4);
+    font-weight: 400;
+    letter-spacing: .003rem;
 }
 
 @media only screen and (min-width: 768px) {

@@ -23,16 +23,18 @@
                     {% for card in card_block.cards %}
                         {% if card.isActive %}
                         <div class="card-block__item">
-                            <img class="card-block__image" src={{ asset('/images/' ~ card.image) }} alt={{ card.title }} >
-                            <div class="card-block__content">
-                                <h3 class="card-block__title">{{ card.title }}</h3>
-                                <p class="card-block__text">{{ card.text }}</p>
+                            <div class="card-block__container">
+                                <img class="card-block__image" src={{ asset('/images/' ~ card.image) }} alt={{ card.title }} >
+                                <div class="card-block__content">
+                                    <h3 class="card-block__title">{{ card.title }}</h3>
+                                    <p class="card-block__text">{{ card.text }}</p>
+                                </div>
+                                <a class="card-block__link" href={{ card.linkUrl }} aria-label="Přejít na článek {{ card.title }}">
+                                    <svg class="card-block__svg">
+                                        <use href="/images/sprite.svg#icon-arrow"></use>
+                                    </svg>
+                                </a>
                             </div>
-                            <a class="card-block__link" href={{ card.linkUrl }} aria-label="Přejít na článek {{ card.title }}">
-                                <svg class="card-block__svg">
-                                    <use href="/images/sprite.svg#icon-arrow"></use>
-                                </svg>
-                            </a>
                         </div>
                         {% endif %}
                     {% endfor %}
@@ -89,6 +91,7 @@
             <ul>
                 <li>Použil přeprocesor například SASS.</li>
                 <li>Jednotlivé komponenty sem ponechal v index.html.twig, předpokládám že je to záměr aby to pro test nebylo zbytečně složité.</li>
+                <li>Pro texty(odstavce), ve figme je letterspacing 0 ale použil jsem .01rem, už jsem se setkal jednou s tímhle problémem když grafik měl zdanlivě stejný font avšak na googlefonts byl jiný.</li>
             </ul>
             <h3>Logo:</h3>
             <ul>

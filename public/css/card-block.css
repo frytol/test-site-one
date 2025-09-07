@@ -24,8 +24,9 @@
 }
 
 .card-block__headline {
-   font-size: var(--f-font-size-8);
-   color: var(--color-text-neutral-dark-3)
+    font-size: var(--f-font-size-8);
+    color: var(--color-text-neutral-dark-3);
+    letter-spacing: .06rem;
 }
 
 .card-block__items {
@@ -38,12 +39,17 @@
     container-type: inline-size;
     container-name: card-block;
     display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-    padding: 1rem;
     border-left: .0625rem solid var(--color-neutral-light-3);
     border-right: .0625rem solid var(--color-neutral-light-3);
     border-top: .0625rem solid var(--color-neutral-light-3);
+}
+
+.card-block__container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    width: 100%;
+    padding: 1rem;
 }
 
 .card-block__image {
@@ -61,11 +67,13 @@
 .card-block__title {
     font-size: var(--f-font-size-5);
     color: var(--color-text-neutral-dark-3);
+    letter-spacing: .06rem;
 }
 
 .card-block__text {
     font-size: var(--f-font-size-5);
     color: var(--color-text-neutral-medium-3);
+    letter-spacing: .01rem;
 }
 
 .card-block__link {
@@ -102,7 +110,7 @@
 }
 
 @container card-block (min-width: 250px) {
-    .card-block__item {
+    .card-block__container {
         gap: 2.5rem;
         padding: 2rem;
     }
